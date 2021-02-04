@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	- Acceuil
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Acceuil</h1>
+		<div class="row">
+		<div class="jumbotron">
+			<h3>Filtres</h3>
+			<form method="POST">
+				{% for techno in technos %}
+				<button type="submit" name="id_techno" value="{{techno.id}}">{{techno.name}}</button>
+				{% endfor %}}
+		</div>
+		</div>
+		<div class="row">
+			{% for project in projects %}
+				<div class="col-lg-4 col-md-6 col-xs-12">
+					<div class="card" style="width: 18rem;">
+						<img src="public/images/hallinbioacceuil.png" class="card-img-top" alt="img1" width="300px">
+						<div class="card-body">
+							<h5 class="card-title">{{project.title}}</h5>
+							<p class="card-text">{{project.description}}</p>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						</ul>
+						<div class="card-body">
+							<a href="{{ path('show_project',{ id: project.id})}}" class="card-link">Card link</a>
+							<a href="#" class="card-link">Another link</a>
+						</div>
+					</div>
+				</div>
+            {% endfor %}
+			</div>
+		</div>
+	{% endblock %}
